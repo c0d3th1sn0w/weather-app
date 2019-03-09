@@ -19,7 +19,7 @@ var convertTempToC = (tempInF) => {
   if(typeof tempInF === 'number' ) {
     return Number(((5/9) * (tempInF - 32)).toFixed(0));
   } else {
-    return '<Invalid temperature value received.>'
+    return 'Internal Error: Invalid temperature value received.'
   }
 };
 
