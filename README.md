@@ -1,5 +1,5 @@
 # weather-app
-A command-line app developed using Javascript (Node.js), which uses Google's Geocode API &amp; for looking up an address and then using the received details to fetch the temperature from the popular Dark Sky API. 
+A command-line app developed using Javascript (Node.js), which uses Google's Geocode API &amp; for looking up an address and then using the received details to fetch the temperature from the popular Dark Sky public API. 
 
 I have also included a version of the code (app-promise.js), which does the same thing using promises (the async way!).
 
