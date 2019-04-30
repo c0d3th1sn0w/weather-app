@@ -23,8 +23,10 @@ var convertTempToC = (tempInF) => {
   }
 };
 
+const googleAPIKey = process.env.GOOGLE_API_KEY;
+const darkSkyAPIKey = process.env.DARK_SKY_API_KEY;
 var userAddressURIFormat = encodeURIComponent(argv.address);
-var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${userAddressURIFormat}&key=AIzaSyAFVNjFpSR5PsPyBF_ZyPKqG8vyNkx6fxQ`;
+var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${userAddressURIFormat}&key=${googleAPIKey}`;
 
 axios.get(geocodeUrl).then((response) => {
   if (response.data.status === 'ZERO_RESULTS') {
@@ -35,7 +37,7 @@ axios.get(geocodeUrl).then((response) => {
   const lat = response.data.results[0].geometry.location.lat;
   const lng = response.data.results[0].geometry.location.lng;
   // Get the weather weather data here
-  var weatherUrl = `https://api.darksky.net/forecast/07182d2d65f5864fc0544992b393b301/${lat},${lng}`;
+  var weatherUrl = `https://api.darksky.net/forecast/${darkSkyAPIKey}/${lat},${lng}`;
   return axios.get(weatherUrl);
 
 }).then((response) => {
