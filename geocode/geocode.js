@@ -1,12 +1,14 @@
 const request = require('request');
 
+const googleAPIKey = process.env.GOOGLE_API_KEY;
+
 const geocodeFetchAddress = (addressString, callback) => {
 
   // Encode the address to URI formatted_address
   const userAddressURIFormat = encodeURIComponent(addressString);
 
   request({
-    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${userAddressURIFormat}&key=AIzaSyAFVNjFpSR5PsPyBF_ZyPKqG8vyNkx6fxQ`,
+    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${userAddressURIFormat}&key=${googleAPIKey}`,
     json: true
   }, (error, response, body) => {      // CALLBACK FUNCTION
     // console.log(JSON.stringify(body, undefined, 2));
@@ -27,8 +29,5 @@ const geocodeFetchAddress = (addressString, callback) => {
     }
   });
 };
-
-// API KEY: 07182d2d65f5864fc0544992b393b301
-// https://api.darksky.net/forecast/07182d2d65f5864fc0544992b393b301/43.6617087,-79.3815764
 
 module.exports.geocodeFetchAddress = geocodeFetchAddress;

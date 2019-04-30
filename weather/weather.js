@@ -1,8 +1,10 @@
 const request = require('request');
 
+const darkSkyAPIKey = process.env.DARK_SKY_API_KEY;
+
 const getWeather = (lat, long, callback) => {
   request({
-    url: `https://api.darksky.net/forecast/07182d2d65f5864fc0544992b393b301/${lat},${long}`,
+    url: `https://api.darksky.net/forecast/${darkSkyAPIKey}/${lat},${long}`,
     json: true
     }, (error, response, body) => {      // CALLBACK FUNCTION
     if(!error && response.statusCode === 200) {
